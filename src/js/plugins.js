@@ -36,6 +36,10 @@
 /*-------------------------------------------------------------
   01. Avoid `console` errors in browsers that lack a console.
 ---------------------------------------------------------------*/
+/* shim for Vite ESM so bare `jQuery` exists in module scope */
+var jQuery = window.jQuery || window.$;
+var $ = jQuery;
+
 
 (function () {
   var method;
