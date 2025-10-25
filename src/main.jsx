@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 /* ==========
    jQuery globals
    ========== */
-import "./legacy/jquery-globals.js";
-import "./legacy/feature-flags.js";
+// import "./legacy/jquery-globals.js";
+// import "./legacy/feature-flags.js";
 
 /* ==========
    Legacy JS (that depends on jQuery)
@@ -17,41 +17,41 @@ import "./legacy/feature-flags.js";
    ========== */
 
 // Bootstrap 5 bundle (Popper included) - does NOT need jQuery, but harmless
-import "./js/bootstrap.bundle.min.js";
+// import "./js/bootstrap.bundle.min.js";
 
 // Nivo slider core + your init
-import "./js/slider/jquery.nivo.slider.pack.js";
-import "./js/slider/nivo-active.js";
+// import "./js/slider/jquery.nivo.slider.pack.js";
+// import "./js/slider/nivo-active.js";
 
 // Countdown (if used by your theme)
-import "./js/jquery.countdown.min.js";
+// import "./js/jquery.countdown.min.js";
 
 // Your Modernizr build references jQuery in your template; import AFTER globals
 // import "./js/vendor/modernizr-3.11.2.min.js";
 
 // Aggregators (uncomment if you still need them; our shim plugin will guard $.fn calls)
-import "./js/plugins.js";
+// import "./js/plugins.js";
 // import "./js/main.js";
 
 /* ==========
    CSS (keep your existing theme order)
    ========== */
-import "./index.css";
-import "./css/bootstrap.min.css";
-import "./css/core.css";
-import "./css/shortcode/shortcodes.css";
-// import "./css/style.css";
-import "./css/responsive.css";
-import "./css/custom.css";
-import "./css/color/skin-default.css";
+// import "./index.css";
+// import "./css/bootstrap.min.css";
+// import "./css/core.css";
+// import "./css/shortcode/shortcodes.css";
+// // import "./css/style.css";
+// import "./css/responsive.css";
+// import "./css/custom.css";
+// import "./css/color/skin-default.css";
 
 // If you STILL use meanmenu plugin JS, keep its CSS;
 // otherwise remove this to avoid unused styles
-import "./css/plugins/meanmenu.min.css";
-import "./css/color/skin-default.css";
-import "./css/plugins/fancybox/jquery.fancybox.css";
-import "./css/plugins/animate.css"
-import "./css/material-design-iconic-font.min.css"
+// import "./css/plugins/meanmenu.min.css";
+// import "./css/color/skin-default.css";
+// import "./css/plugins/fancybox/jquery.fancybox.css";
+// import "./css/plugins/animate.css";
+// import "./css/material-design-iconic-font.min.css";
 
 /* ==========
    Mount React
