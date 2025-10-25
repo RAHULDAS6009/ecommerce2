@@ -1300,12 +1300,7 @@ export const LandingPage = () => {
                       <div className="quick-add-to-cart">
                         <form method="post" className="cart">
                           <div className="numbers-row">
-                            <input
-                              type="number"
-                              id="french-hens"
-                              value="3"
-                              min="1"
-                            />
+                            <input type="number" id="french-hens" min="1" />
                           </div>
                           <button
                             className="single_add_to_cart_button"
