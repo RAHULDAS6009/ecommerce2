@@ -9,3 +9,4 @@ $.migrateTrace = false;
 
 import "jquery-migrate";
 export default $;
+//
