@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import ShopMainArea from "../components/ShopMainArea";
 
 const ShopFullGridPage = () => {
+  useEffect(() => {
+    console.log("hello");
+  }, []);
   return (
     <div>
       <Header />
@@ -15,7 +18,7 @@ const ShopFullGridPage = () => {
           </div>
           <ol className="breadcrumb">
             <li className="home">
-              <a title="Go to Home Page" href="index.html">
+              <a title="Go to Home Page" href="/">
                 Home
               </a>
             </li>
