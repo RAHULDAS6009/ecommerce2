@@ -84,30 +84,30 @@ const ShopMainArea = () => {
           </div>
         </div>
       </div>
-      <div class="footer-area ptb-50">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-4">
-              <div class="single-footer contact-us">
-                <div class="footer-title uppercase">
+      <div className="footer-area ptb-50">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-3 col-lg-3 col-md-4">
+              <div className="single-footer contact-us">
+                <div className="footer-title uppercase">
                   <h5>Contact US</h5>
                 </div>
                 <ul>
                   <li>
-                    <div class="contact-icon">
+                    <div className="contact-icon">
                       {" "}
-                      <i class="zmdi zmdi-pin-drop"></i>{" "}
+                      <i className="zmdi zmdi-pin-drop"></i>{" "}
                     </div>
-                    <div class="contact-text">
+                    <div className="contact-text">
                       <p>Address: Your address goes here</p>
                     </div>
                   </li>
                   <li>
-                    <div class="contact-icon">
+                    <div className="contact-icon">
                       {" "}
-                      <i class="zmdi zmdi-email-open"></i>{" "}
+                      <i className="zmdi zmdi-email-open"></i>{" "}
                     </div>
-                    <div class="contact-text">
+                    <div className="contact-text">
                       <p>
                         <span>
                           <a href="mailto://demo@example.com">
@@ -123,11 +123,11 @@ const ShopMainArea = () => {
                     </div>
                   </li>
                   <li>
-                    <div class="contact-icon">
+                    <div className="contact-icon">
                       {" "}
-                      <i class="zmdi zmdi-phone-paused"></i>{" "}
+                      <i className="zmdi zmdi-phone-paused"></i>{" "}
                     </div>
-                    <div class="contact-text">
+                    <div className="contact-text">
                       <p>
                         <a href="tel://01234567890">01234567890</a>{" "}
                         <a href="tel://01234567890">01234567890</a>
@@ -137,12 +137,12 @@ const ShopMainArea = () => {
                 </ul>
               </div>
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-4">
-              <div class="single-footer informaton-area">
-                <div class="footer-title uppercase">
+            <div className="col-xl-2 col-lg-2 col-md-4">
+              <div className="single-footer informaton-area">
+                <div className="footer-title uppercase">
                   <h5>Information</h5>
                 </div>
-                <div class="informatoin">
+                <div className="informatoin">
                   <ul>
                     <li>
                       <a href="#">My Account</a>
@@ -166,12 +166,12 @@ const ShopMainArea = () => {
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-4 d-md-none d-block d-lg-block">
-              <div class="single-footer instagrm-area">
-                <div class="footer-title uppercase">
+            <div className="col-xl-3 col-lg-4 d-md-none d-block d-lg-block">
+              <div className="single-footer instagrm-area">
+                <div className="footer-title uppercase">
                   <h5>InstaGram</h5>
                 </div>
-                <div class="instagrm">
+                <div className="instagrm">
                   <ul>
                     <li>
                       <a href="#">
@@ -207,48 +207,48 @@ const ShopMainArea = () => {
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 offset-xl-1">
-              <div class="single-footer newslatter-area">
-                <div class="footer-title uppercase">
+            <div className="col-xl-3 col-lg-3 col-md-4 offset-xl-1">
+              <div className="single-footer newslatter-area">
+                <div className="footer-title uppercase">
                   <h5>Get Newsletters</h5>
                 </div>
-                <div class="newslatter">
+                <div className="newslatter">
                   <form action="#" method="post">
-                    <div class="input-box pos-rltv">
+                    <div className="input-box pos-rltv">
                       <input placeholder="Type Your Email hear" type="text" />
                       <a href="#">
-                        <i class="zmdi zmdi-arrow-right"></i>
+                        <i className="zmdi zmdi-arrow-right"></i>
                       </a>
                     </div>
                   </form>
-                  <div class="social-icon socile-icon-style-3 mt-40">
-                    <div class="footer-title uppercase">
+                  <div className="social-icon socile-icon-style-3 mt-40">
+                    <div className="footer-title uppercase">
                       <h5>Social Network</h5>
                     </div>
                     <ul>
                       <li>
                         <a href="#">
-                          <i class="zmdi zmdi-facebook"></i>
+                          <i className="zmdi zmdi-facebook"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="zmdi zmdi-linkedin"></i>
+                          <i className="zmdi zmdi-linkedin"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="zmdi zmdi-pinterest"></i>
+                          <i className="zmdi zmdi-pinterest"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="zmdi zmdi-google"></i>
+                          <i className="zmdi zmdi-google"></i>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="zmdi zmdi-twitter"></i>
+                          <i className="zmdi zmdi-twitter"></i>
                         </a>
                       </li>
                     </ul>
@@ -257,18 +257,19 @@ const ShopMainArea = () => {
               </div>
             </div>
 
-            <div class="footer-bottom global-table">
-              <div class="global-row">
-                <div class="global-cell">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p class="copyrigth text-center">
-                          © 2022 <span class="text-capitalize">clothing</span>.
+            <div className="footer-bottom global-table">
+              <div className="global-row">
+                <div className="global-cell">
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <p className="copyrigth text-center">
+                          © 2022{" "}
+                          <span className="text-capitalize">clothing</span>.
                           Made with{" "}
                           <i
                             style={{ color: "#f53400" }}
-                            class="fa fa-heart"
+                            className="fa fa-heart"
                           ></i>
                           by
                           <a href="https://themeforest.net/user/codecarnival/portfolio">
@@ -276,8 +277,8 @@ const ShopMainArea = () => {
                           </a>
                         </p>
                       </div>
-                      <div class="col-md-6">
-                        <ul class="payment-support text-end">
+                      <div className="col-md-6">
+                        <ul className="payment-support text-end">
                           <li>
                             <a href="#">
                               <img src="images/icons/pay1.png" alt="" />
