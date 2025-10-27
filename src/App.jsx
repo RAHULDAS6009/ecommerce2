@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LandingPage } from "./pages/LandingPage";
 import ShopFullGridPage from "./pages/ShopFullGridPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -11,6 +12,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/fullgrid" element={<ShopFullGridPage />} />
+          {/*  */}
+          <Route path="/productdetails" element={<ProductDetailsPage />} />
+          {/* <Route path="/productdetails/:id" element={<ProductDetailsPage />} /> */}
         </Routes>
       </Router>
     </div>
