@@ -51,8 +51,8 @@ function wrapLegacyPlugins() {
 
 export default defineConfig({
   plugins: [
-    stripCharsetVitePlugin(),   // must run first
-    wrapLegacyPlugins(),        // make legacy files happy in ESM
+    stripCharsetVitePlugin(), // must run first
+    wrapLegacyPlugins(), // make legacy files happy in ESM
     react(),
     tailwindcss(),
   ],
