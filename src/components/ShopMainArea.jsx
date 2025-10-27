@@ -13,21 +13,17 @@ const ShopMainArea = () => {
                   <div className="col-xl-4 col-lg-5 col-md-6">
                     <div className="sort product-show">
                       <label>View</label>
-                      <select id="input-amount">
-                        <option value="volvo">10</option>
-                        <option value="saab">15</option>
-                        <option value="vw">20</option>
-                        <option value="audi" selected>
-                          25
-                        </option>
+                      <select id="input-amount" defaultValue={25}>
+                        <option value={10}>10</option>
+                        <option value={15}>15</option>
+                        <option value={20}>20</option>
+                        <option value={25}>25</option>
                       </select>
                     </div>
                     <div className="sort product-type">
                       <label>Sort By</label>
-                      <select id="input-sort">
-                        <option value="#" selected>
-                          Default
-                        </option>
+                      <select id="input-sort" defaultValue="">
+                        <option value="">Default</option>
                         <option value="#">Name (A - Z)</option>
                         <option value="#">Name (Z - A)</option>
                         <option value="#">Price (Low &gt; High)</option>
