@@ -1,8 +1,13 @@
 import React from "react";
+import { productData } from "../data";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export const ProductCard = ({ product }) => {
   const {
     label,
+    id,
     primaryImage,
     secondaryImage,
     name,
@@ -13,8 +18,16 @@ export const ProductCard = ({ product }) => {
     rating,
   } = product;
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
-    <div className="product-item">
+    <div
+      className="product-item"
+      onClick={() => {
+        navigate(`/productdetails/${id}`);
+      }}
+    >
       <div className="single-product">
         <div className="product-img">
           {/* Product Label */}
@@ -50,6 +63,9 @@ export const ProductCard = ({ product }) => {
                 <li key={index}>
                   <a
                     href="#"
+                    onClick={() => {
+                      dispatch(addToCart(product));
+                    }}
                     data-tooltip={tooltip}
                     className={tooltip.toLowerCase().replace(/\s+/g, "-")}
                     data-placement="left"
@@ -95,38 +111,6 @@ export const ProductCard = ({ product }) => {
     </div>
   );
 };
-
-export const productData = [
-  {
-    name: "Quisque fringilla",
-    primaryImage: "/images/product/01.jpg",
-    secondaryImage: "/images/product/02.jpg",
-    price: 220,
-    isNew: true,
-  },
-  {
-    name: "Elegant Dress",
-    primaryImage: "/images/product/03.jpg",
-    secondaryImage: "/images/product/04.jpg",
-    price: 220,
-  },
-  {
-    name: "Summer Top",
-    primaryImage: "/images/product/02.jpg",
-    secondaryImage: "/images/product/03.jpg",
-    price: 220,
-    isSale: true,
-    rating: 4,
-  },
-  {
-    name: "Casual Shoes",
-    primaryImage: "/images/product/05.jpg",
-    secondaryImage: "/images/product/06.jpg",
-    price: 220,
-    oldPrice: 250,
-    rating: 4,
-  },
-];
 
 // ✅ Parent Component
 const NewArrivalArea = () => {

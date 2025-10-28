@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen((v) => !v);
+  const cart = useSelector((state) => state.cart.data);
+  const [items, setItem] = useState(0);
+
+  useEffect(() => {
+    setItem(cart.length);
+  }, [cart]);
 
   return (
     <div className="wrapper home-one">
@@ -64,11 +71,11 @@ const Header = () => {
                     <li>
                       <div className="header-cart">
                         <div className="cart-icon">
-                          <a href="#">
+                          <a href="/cart">
                             Cart
                             <i className="zmdi zmdi-shopping-cart" />
                           </a>
-                          <span>2</span>
+                          <span>{items}</span>
                         </div>
                         <div className="cart-content-wraper">
                           <div className="cart-single-wraper">

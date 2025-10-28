@@ -1,5 +1,6 @@
 import React from "react";
-import { ProductCard, productData } from "./NewArrivalArea";
+import { ProductCard } from "./NewArrivalArea";
+import { productData } from "../data";
 
 const ShopMainArea = () => {
   return (
