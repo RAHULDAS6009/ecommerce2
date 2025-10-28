@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../redux/cartSlice";
+import { updateQuantity } from "../redux/cartSlice";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.data);
@@ -134,18 +135,51 @@ const Cart = () => {
                                                   alignItems: "center",
                                                 }}
                                               >
-                                                <div className="dec qtybutton">
+                                                <div
+                                                  className="dec qtybutton"
+                                                  style={{
+                                                    cursor: "pointer",
+                                                    userSelect: "none",
+                                                  }}
+                                                  onClick={() =>
+                                                    dispatch(
+                                                      updateQuantity({
+                                                        id: item.id,
+                                                        quantity:
+                                                          item.quantity - 1,
+                                                      })
+                                                    )
+                                                  }
+                                                >
                                                   -
                                                 </div>
+
                                                 <span
                                                   style={{
                                                     minWidth: "30px",
                                                     fontWeight: "bold",
+                                                    textAlign: "center",
                                                   }}
                                                 >
                                                   {item.quantity}
                                                 </span>
-                                                <div className="inc qtybutton">
+
+                                                <div
+                                                  className="inc qtybutton"
+                                                  style={{
+                                                    cursor: "pointer",
+                                                    userSelect: "none",
+                                                  }}
+                                                  onClick={() =>
+                                                    dispatch(
+                                                      updateQuantity({
+                                                        id: item.id,
+                                                        quantity:
+                                                          item.quantity + 1,
+                                                      })
+                                                    )
+                                                  }
+                                                >
                                                   +
                                                 </div>
                                               </div>

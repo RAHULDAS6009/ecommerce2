@@ -5,10 +5,10 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen((v) => !v);
   const cart = useSelector((state) => state.cart.data);
-  const [items, setItem] = useState(0);
+  const [items, setItem] = useState([]);
 
   useEffect(() => {
-    setItem(cart.length);
+    setItem(cart);
   }, [cart]);
 
   return (
@@ -75,71 +75,62 @@ const Header = () => {
                             Cart
                             <i className="zmdi zmdi-shopping-cart" />
                           </a>
-                          <span>{items}</span>
+                          <span>{items.length}</span>
                         </div>
+
                         <div className="cart-content-wraper">
-                          <div className="cart-single-wraper">
-                            <div className="cart-img">
-                              <a href="#">
-                                <img
-                                  src="images/product/01.jpg"
-                                  alt="Product 01"
-                                />
-                              </a>
-                            </div>
-                            <div className="cart-content">
-                              <div className="cart-name">
-                                <a href="#">Aenean Eu Tristique</a>
+                          {items.slice(0, 2).map((item, index) => (
+                            <div key={index} className="cart-single-wraper">
+                              <div className="cart-img">
+                                <a href="#">
+                                  <img
+                                    src={item.primaryImage}
+                                    alt={item.name}
+                                  />
+                                </a>
                               </div>
-                              <div className="cart-price">$70.00</div>
-                              <div className="cart-qty">
-                                Qty: <span>1</span>
-                              </div>
-                            </div>
-                            <div className="remove">
-                              <a href="#">
-                                <i className="zmdi zmdi-close" />
-                              </a>
-                            </div>
-                          </div>
 
-                          <div className="cart-single-wraper">
-                            <div className="cart-img">
-                              <a href="#">
-                                <img
-                                  src="images/product/02.jpg"
-                                  alt="Product 02"
-                                />
-                              </a>
-                            </div>
-                            <div className="cart-content">
-                              <div className="cart-name">
-                                <a href="#">Aenean Eu Tristique</a>
+                              <div className="cart-content">
+                                <div className="cart-name">
+                                  <a href="#">{item.name}</a>
+                                </div>
+                                <div className="cart-price">${item.price}</div>
+                                <div className="cart-qty">
+                                  Qty: <span>{item.quantity}</span>
+                                </div>
                               </div>
-                              <div className="cart-price">$70.00</div>
-                              <div className="cart-qty">
-                                Qty: <span>1</span>
-                              </div>
-                            </div>
-                            <div className="remove">
-                              <a href="#">
-                                <i className="zmdi zmdi-close" />
-                              </a>
-                            </div>
-                          </div>
 
-                          <div className="cart-subtotal">
-                            Subtotal: <span>$200.00</span>
-                          </div>
+                              <div className="remove">
+                                <a href="#">
+                                  <i className="zmdi zmdi-close" />
+                                </a>
+                              </div>
+                            </div>
+                          ))}
+
+                          {/* <div className="cart-subtotal">
+                            Subtotal:{" "}
+                            <span>
+                              $
+                              {items
+                                .slice(0, 2)
+                                .reduce(
+                                  (sum, item) =>
+                                    sum + item.price * item.quanity,
+                                  0
+                                )
+                                .toFixed(2)}
+                            </span>
+                          </div> */}
 
                           <div className="cart-check-btn">
                             <div className="view-cart">
-                              <a className="btn-def" href="cart.html">
+                              <a className="btn-def" href="/cart">
                                 View Cart
                               </a>
                             </div>
                             <div className="check-btn">
-                              <a className="btn-def" href="checkout.html">
+                              <a className="btn-def" href="/checkout">
                                 Checkout
                               </a>
                             </div>
