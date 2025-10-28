@@ -154,7 +154,9 @@ const Cart = () => {
                                         </div>
                                       </td>
                                       <td className="total-price">
-                                        <strong>${item.price}</strong>
+                                        <strong>
+                                          ${item.price * item.quantity}
+                                        </strong>
                                       </td>
                                       <td
                                         className="remove-item"

@@ -1,5 +1,6 @@
 const Data = [];
 
+// old data
 // export const productData = [
 //   {
 //     id: 1,
@@ -40,6 +41,8 @@ const Data = [];
 //   },
 // ];
 
+//updated
+
 export const productData = [
   {
     id: 1,
@@ -52,6 +55,16 @@ export const productData = [
     isNew: true,
     isSale: false,
     rating: 3,
+    images: [
+      "images/product/01.jpg",
+      "images/product/02.jpg",
+      "images/product/03.jpg",
+      "images/product/04.jpg",
+    ],
+    description:
+      "A trendy and comfortable outfit designed for everyday wear. Made from soft, breathable fabric with a perfect fit for any occasion.",
+    colors: ["Red", "Blue", "Green", "Purple", "Black", "White"],
+    sizes: ["S", "M", "L", "XL", "XXL"],
   },
   {
     id: 2,
@@ -64,6 +77,16 @@ export const productData = [
     isNew: false,
     isSale: false,
     rating: 4,
+    images: [
+      "images/product/01.jpg",
+      "images/product/02.jpg",
+      "images/product/03.jpg",
+      "images/product/04.jpg",
+    ],
+    description:
+      "An elegant and classy dress made from premium-quality fabric. Perfect for formal gatherings, parties, and special occasions.",
+    colors: ["Black", "Maroon", "Navy Blue", "Emerald Green"],
+    sizes: ["XS", "S", "M", "L", "XL"],
   },
   {
     id: 3,
@@ -76,6 +99,16 @@ export const productData = [
     isNew: false,
     isSale: true,
     rating: 4,
+    images: [
+      "images/product/01.jpg",
+      "images/product/02.jpg",
+      "images/product/03.jpg",
+      "images/product/04.jpg",
+    ],
+    description:
+      "Lightweight and breezy summer top made with cotton blend fabric. Ideal for sunny days and casual outings.",
+    colors: ["Yellow", "Peach", "Sky Blue", "White"],
+    sizes: ["S", "M", "L", "XL"],
   },
   {
     id: 4,
@@ -88,5 +121,15 @@ export const productData = [
     isNew: false,
     isSale: false,
     rating: 4,
+    images: [
+      "images/product/01.jpg",
+      "images/product/02.jpg",
+      "images/product/03.jpg",
+      "images/product/04.jpg",
+    ],
+    description:
+      "Durable and stylish casual shoes offering all-day comfort. Designed with premium materials and a cushioned sole for maximum support.",
+    colors: ["Black", "White", "Grey", "Brown"],
+    sizes: ["6", "7", "8", "9", "10", "11"],
   },
 ];

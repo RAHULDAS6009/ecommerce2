@@ -22,12 +22,7 @@ export const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
   return (
-    <div
-      className="product-item"
-      onClick={() => {
-        navigate(`/productdetails/${id}`);
-      }}
-    >
+    <div className="product-item">
       <div className="single-product">
         <div className="product-img">
           {/* Product Label */}
@@ -40,8 +35,13 @@ export const ProductCard = ({ product }) => {
           )}
 
           {/* Product Images */}
-          <div className="single-prodcut-img product-overlay pos-rltv">
-            <a href="#">
+          <div
+            className="single-prodcut-img product-overlay pos-rltv"
+            onClick={() => {
+              navigate(`/productdetails/${id}`);
+            }}
+          >
+            <a href="">
               <img alt={name} src={primaryImage} className="primary-image" />
               <img
                 alt={name}

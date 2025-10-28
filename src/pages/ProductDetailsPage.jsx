@@ -1,23 +1,26 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import "./ProductDetails.css";
-const product = {
-  name: "GLOB T-SHIRT",
-  brand: "Brand",
-  price: 220,
-  oldPrice: 250,
-  rating: 4,
-  description:
-    "It is a long established fact that a reader will be distracted by the readable content of a page...",
-  images: [
-    "images/product/01.jpg",
-    "images/product/02.jpg",
-    "images/product/03.jpg",
-    "images/product/04.jpg",
-  ],
-  colors: ["Red", "Blue", "Green", "Purple", "Black", "White"],
-  sizes: ["S", "M", "L", "XL", "XXL"],
-};
+import { useParams } from "react-router-dom";
+import { productData } from "../data";
+import { useDispatch } from "react-redux";
+// const product = {
+//   name: "GLOB T-SHIRT",
+//   brand: "Brand",
+//   price: 220,
+//   oldPrice: 250,
+//   rating: 4,
+//   description:
+//     "It is a long established fact that a reader will be distracted by the readable content of a page...",
+//   images: [
+//     "images/product/01.jpg",
+//     "images/product/02.jpg",
+//     "images/product/03.jpg",
+//     "images/product/04.jpg",
+//   ],
+//   colors: ["Red", "Blue", "Green", "Purple", "Black", "White"],
+//   sizes: ["S", "M", "L", "XL", "XXL"],
+// };
 const productTag = {
   tags: [
     "Fashion",
@@ -31,6 +34,8 @@ const productTag = {
 };
 
 const ProductDetailsPage = () => {
+  const { id } = useParams();
+  const product = productData.find((item) => item.id == id);
   return (
     <div className="wrapper shop-full-grid">
       <Header />
@@ -58,10 +63,10 @@ const ProductDetailsPage = () => {
   );
 };
 
-export default ProductDetailsPage;
-
 const SinglePortfolio = ({ product }) => {
-  const [quantity, setQuantity] = useState(2);
+  const dispatch = useDispatch();
+
+  const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -69,6 +74,25 @@ const SinglePortfolio = ({ product }) => {
     setQuantity((prev) =>
       type === "inc" ? prev + 1 : prev > 1 ? prev - 1 : 1
     );
+  };
+
+  // ✅ Add to Cart functionality
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+
+    if (!selectedColor || !selectedSize) {
+      alert("Please select both color and size before adding to cart.");
+      return;
+    }
+
+    const itemToAdd = {
+      ...product,
+      selectedColor,
+      selectedSize,
+      quantity,
+    };
+
+    dispatch(addToCart(itemToAdd));
   };
 
   return (
@@ -86,13 +110,16 @@ const SinglePortfolio = ({ product }) => {
                         <li key={index}>
                           <a
                             className={`shadow-box ${
-                              index === 0 ? "active" : ""
+                              product.id === 1 ? "active" : ""
                             }`}
                             href={`#view${index + 1}`}
                             aria-controls={`view${index + 1}`}
                             data-bs-toggle="tab"
                           >
-                            <img src={img} alt={`Thumbnail ${index + 1}`} />
+                            <img
+                              src={"/" + img}
+                              alt={`Thumbnail ${index + 1}`}
+                            />
                           </a>
                         </li>
                       ))}
@@ -108,24 +135,12 @@ const SinglePortfolio = ({ product }) => {
                   </a>
                 </div>
 
-                {product?.images?.map((img, index) => (
-                  <div
-                    key={index}
-                    role="tabpanel"
-                    className={`tab-pane ${index === 0 ? "active" : ""}`}
-                    id={`view${index + 1}`}
-                  >
-                    <div className="product-img">
-                      <a
-                        className="fancybox"
-                        data-fancybox-group="group"
-                        href={img}
-                      >
-                        <img src={img} alt="Single portfolio" />
-                      </a>
-                    </div>
-                  </div>
-                ))}
+                <img
+                  style={{ width: "100%" }}
+                  src={product.primaryImage}
+                  alt=""
+                  srcSet=""
+                />
               </div>
             </div>
           </div>
@@ -134,9 +149,7 @@ const SinglePortfolio = ({ product }) => {
           <div className="col-lg-5">
             <div className="single-product-description">
               <div className="sp-top-des">
-                <h3>
-                  {product?.name} <span>({product?.brand})</span>
-                </h3>
+                <h3>{product?.name}</h3>
                 <div className="prodcut-ratting-price">
                   <div className="prodcut-ratting">
                     {[...Array(5)].map((_, i) => (
@@ -234,6 +247,7 @@ const SinglePortfolio = ({ product }) => {
                     <li>
                       <a
                         href="#"
+                        onClick={handleAddToCart}
                         data-tooltip="Add To Cart"
                         className="add-cart add-cart-text"
                         data-placement="left"
@@ -283,6 +297,219 @@ const SinglePortfolio = ({ product }) => {
     </div>
   );
 };
+
+// const SinglePortfolio = ({ product }) => {
+//   const [quantity, setQuantity] = useState(0);
+//   const [selectedColor, setSelectedColor] = useState("");
+//   const [selectedSize, setSelectedSize] = useState("");
+
+//   const handleQuantityChange = (type) => {
+//     setQuantity((prev) =>
+//       type === "inc" ? prev + 1 : prev > 1 ? prev - 1 : 1
+//     );
+//   };
+
+//   return (
+//     <div className="single-protfolio-area ptb-70">
+//       <div className="container">
+//         <div className="row">
+//           {/* Left Side - Product Thumbnails */}
+//           <div className="col-lg-7">
+//             <div className="portfolio-thumbnil-area">
+//               <div className="product-more-views">
+//                 <div className="tab_thumbnail" data-tabs="tabs">
+//                   <div className="thumbnail-carousel">
+//                     <ul className="nav">
+//                       {product?.images?.map((img, index) => (
+//                         <li key={index}>
+//                           <a
+//                             className={`shadow-box ${
+//                               product.id === 1 ? "active" : ""
+//                             }`}
+//                             href={`#view${index + 1}`}
+//                             aria-controls={`view${index + 1}`}
+//                             data-bs-toggle="tab"
+//                           >
+//                             <img
+//                               src={"/" + img}
+//                               alt={`Thumbnail ${index + 1}`}
+//                             />
+//                           </a>
+//                         </li>
+//                       ))}
+//                     </ul>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="tab-content active-portfolio-area pos-rltv">
+//                 <div className="social-tag">
+//                   <a href="#">
+//                     <i className="zmdi zmdi-share"></i>
+//                   </a>
+//                 </div>
+
+//                 <img
+//                   style={{ width: "100%" }}
+//                   src={product.primaryImage}
+//                   alt=""
+//                   srcset=""
+//                 />
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Right Side - Product Details */}
+//           <div className="col-lg-5">
+//             <div className="single-product-description">
+//               <div className="sp-top-des">
+//                 <h3>{product?.name}</h3>
+//                 <div className="prodcut-ratting-price">
+//                   <div className="prodcut-ratting">
+//                     {[...Array(5)].map((_, i) => (
+//                       <a href="#" key={i} tabIndex="0">
+//                         <i
+//                           className={
+//                             i < product?.rating ? "fa fa-star" : "fa fa-star-o"
+//                           }
+//                         ></i>
+//                       </a>
+//                     ))}
+//                   </div>
+//                   <div className="prodcut-price">
+//                     <div className="new-price">${product?.price}</div>
+//                     {product?.oldPrice && (
+//                       <div className="old-price">
+//                         <del>${product.oldPrice}</del>
+//                       </div>
+//                     )}
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="sp-des">
+//                 <p>{product?.description}</p>
+//               </div>
+
+//               <div className="sp-bottom-des">
+//                 {/* Product Options */}
+//                 <div className="single-product-option">
+//                   <div className="sort product-type">
+//                     <label>Color: </label>
+//                     <select
+//                       id="input-sort-color"
+//                       value={selectedColor}
+//                       onChange={(e) => setSelectedColor(e.target.value)}
+//                     >
+//                       <option value="">Choose Your Color</option>
+//                       {product?.colors?.map((color) => (
+//                         <option key={color} value={color}>
+//                           {color}
+//                         </option>
+//                       ))}
+//                     </select>
+//                   </div>
+//                   <div className="sort product-type">
+//                     <label>Size: </label>
+//                     <select
+//                       id="input-sort-size"
+//                       value={selectedSize}
+//                       onChange={(e) => setSelectedSize(e.target.value)}
+//                     >
+//                       <option value="">Choose Your Size</option>
+//                       {product?.sizes?.map((size) => (
+//                         <option key={size} value={size}>
+//                           {size}
+//                         </option>
+//                       ))}
+//                     </select>
+//                   </div>
+//                 </div>
+
+//                 {/* Quantity */}
+//                 <div className="quantity-area">
+//                   <label>Qty :</label>
+//                   <div className="cart-quantity">
+//                     <div className="product-qty">
+//                       <div className="cart-plus-minus">
+//                         <div
+//                           className="dec qtybutton"
+//                           onClick={() => handleQuantityChange("dec")}
+//                         >
+//                           -
+//                         </div>
+//                         <input
+//                           type="text"
+//                           value={quantity.toString().padStart(2, "0")}
+//                           readOnly
+//                           className="cart-plus-minus-box"
+//                         />
+//                         <div
+//                           className="inc qtybutton"
+//                           onClick={() => handleQuantityChange("inc")}
+//                         >
+//                           +
+//                         </div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </div>
+
+//                 {/* Buttons */}
+//                 <div className="social-icon socile-icon-style-1">
+//                   <ul>
+//                     <li>
+//                       <a
+//                         href="#"
+//                         data-tooltip="Add To Cart"
+//                         className="add-cart add-cart-text"
+//                         data-placement="left"
+//                       >
+//                         Add To Cart <i className="fa fa-cart-plus"></i>
+//                       </a>
+//                     </li>
+//                     <li>
+//                       <a
+//                         href="#"
+//                         data-tooltip="Wishlist"
+//                         className="w-list"
+//                         tabIndex="0"
+//                       >
+//                         <i className="fa fa-heart-o"></i>
+//                       </a>
+//                     </li>
+//                     <li>
+//                       <a
+//                         href="#"
+//                         data-tooltip="Compare"
+//                         className="cpare"
+//                         tabIndex="0"
+//                       >
+//                         <i className="fa fa-refresh"></i>
+//                       </a>
+//                     </li>
+//                     <li>
+//                       <a
+//                         href="#"
+//                         data-tooltip="Quick View"
+//                         className="q-view"
+//                         data-bs-toggle="modal"
+//                         data-bs-target=".modal"
+//                         tabIndex="0"
+//                       >
+//                         <i className="fa fa-eye"></i>
+//                       </a>
+//                     </li>
+//                   </ul>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 const ProductDescriptionTabs = ({ product }) => {
   const [activeTab, setActiveTab] = useState("review");
@@ -547,9 +774,9 @@ const RelatedProducts = () => {
 
                       {/* Images */}
                       <div className="single-prodcut-img product-overlay pos-rltv">
-                        <a href="single-product.html">
+                        <a href={product.id}>
                           <img
-                            src={product.primaryImage}
+                            src={`/` + product.primaryImage}
                             alt={product.name}
                             className="primary-image"
                           />
@@ -850,3 +1077,5 @@ const Footer = () => {
     </>
   );
 };
+
+export default ProductDetailsPage;

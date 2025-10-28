@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/fullgrid" element={<ShopFullGridPage />} />
           {/*  */}
-          <Route path="/productdetails" element={<ProductDetailsPage />} />
+          <Route path="/productdetails/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<Cart />} />
           {/* <Route path="/productdetails/:id" element={<ProductDetailsPage />} /> */}
         </Routes>
