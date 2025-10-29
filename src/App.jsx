@@ -4,6 +4,7 @@ import { LandingPage } from "./pages/LandingPage";
 import ShopFullGridPage from "./pages/ShopFullGridPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Cart from "./pages/Cart";
+
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
