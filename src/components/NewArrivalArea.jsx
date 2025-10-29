@@ -129,7 +129,7 @@ export const ProductCard = ({ product }) => {
 const NewArrivalArea = () => {
   // replicate your jQuery config
   const settings = {
-    slidesToShow: 4,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 5000,

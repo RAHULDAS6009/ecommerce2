@@ -4,7 +4,7 @@ import { ProductCard } from "./NewArrivalArea";
 import { productData } from "../data";
 
 const sliderSettings = {
-  slidesToShow: 4,
+  slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: false,
   autoplaySpeed: 5000,
