@@ -6,6 +6,26 @@ import { BrandingSection } from "../components/BrandingSection";
 import NewArrivalArea from "../components/NewArrivalArea";
 import Banner from "../components/Banner";
 import DiscuntedArea from "../components/DiscuntedArea";
+import { productData } from "../data";
+
+// const products = [
+//   {
+//     img: "/images/product/s01.jpg",
+//     name: "Primo Court Mid Suede",
+//     price: "$236.99",
+//   },
+//   {
+//     img: "/images/product/s02.jpg",
+//     name: "Primo Court Mid Suede",
+//     price: "$236.99",
+//   },
+// ];
+
+const categories = [
+  { title: "New Arrival", className: "new-arrival-ctg" },
+  { title: "On Sale", className: "on-sale-ctg" },
+  { title: "Top Rated", className: "top-rated-ctg" },
+];
 
 export const LandingPage = () => {
   return (
@@ -14,33 +34,25 @@ export const LandingPage = () => {
         {/* Start of header area */}
         <Header />
         {/* End of header area */}
-
         {/*slider area start*/}
         <SliderArea />
         {/*slider area start*/}
-
         {/*delivery service start*/}
         <DeliveryService />
         {/*delivery service start*/}
-
         {/*branding-section-area start*/}
-        <BrandingSection />
         {/*branding-section-area end*/}
-
         {/*new arrival area start*/}
         <NewArrivalArea />
         {/*new arrival area end*/}
-
         {/*banner area start*/}
         <Banner />
         {/*banner area end*/}
-
         {/*discunt-featured-onsale-area start */}
         <DiscuntedArea />
         {/*discunt-featured-onsale-area end*/}
-
         {/*testimonial-area-start*/}
-        <div className="testimonial-area overlay ptb-70 mt-70">
+        {/* <div className="testimonial-area overlay ptb-70 mt-70">
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
@@ -111,513 +123,79 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/*testimonial-area-end*/}
-
         {/*new-arrival on-sale Top-ratted area start*/}
         <div className="arrival-ratted-sale-area pt-70">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="heading-title heading-style pos-rltv mb-50 text-center">
-                  <h5 className="uppercase">New Arrival</h5>
-                </div>
-                <div className="ctg-slider-active">
-                  <div className="single-ctg new-arrival-ctg">
-                    <div className="single-ctg-item">
-                      <div className="row">
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-img pos-rltv product-overlay">
-                            <a href="single-product.html">
-                              <img src="/images/product/s01.jpg" alt="" />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-content">
-                            <p>Primo Court Mid Suede</p>
-                            <p className="font-bold">$236.99</p>
-                            <div className="social-icon socile-icon-style-1 mt-15">
-                              <ul>
-                                <li>
-                                  <a href="#">
-                                    <i className="zmdi zmdi-shopping-cart"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    data-tooltip="Quick View"
-                                    className="q-view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target=".modal"
-                                    tabIndex="0"
-                                  >
-                                    <i className="zmdi zmdi-eye"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+              {categories.map((cat, i) => (
+                <div className="col-md-4" key={i}>
+                  <div className={`single-ctg ${cat.className}`}>
+                    <div className="heading-title heading-style pos-rltv mb-50 text-center">
+                      <h5 className="uppercase">{cat.title}</h5>
                     </div>
-                    <div className="single-ctg-item">
-                      <div className="row">
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-img pos-rltv product-overlay">
-                            <a href="single-product.html">
-                              <img src="/images/product/s02.jpg" alt="" />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-content">
-                            <p>Primo Court Mid Suede</p>
-                            <p className="font-bold">$236.99</p>
-                            <div className="social-icon socile-icon-style-1 mt-15">
-                              <ul>
-                                <li>
-                                  <a href="#">
-                                    <i className="zmdi zmdi-shopping-cart"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    data-tooltip="Quick View"
-                                    className="q-view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target=".modal"
-                                    tabIndex="0"
-                                  >
-                                    <i className="zmdi zmdi-eye"></i>
-                                  </a>
-                                </li>
-                              </ul>
+                    <div className="ctg-slider-active">
+                      {[1, 2].map((_, idx) => (
+                        <div
+                          className={`single-ctg ${cat.className}`}
+                          key={idx}
+                        >
+                          {productData.slice(5).map((product, index) => (
+                            <div className="single-ctg-item" key={index}>
+                              <div className="row">
+                                <div className="col-lg-6 col-md-12 col-sm-6">
+                                  <div className="product-ctg-img pos-rltv product-overlay">
+                                    <a href="single-product.html">
+                                      <img
+                                        src={product.primaryImage}
+                                        alt={product.name}
+                                      />
+                                    </a>
+                                  </div>
+                                </div>
+                                <div className="col-lg-6 col-md-12 col-sm-6">
+                                  <div className="product-ctg-content">
+                                    <p>{product.name}</p>
+                                    <p className="font-bold">{product.price}</p>
+                                    <div className="social-icon socile-icon-style-1 mt-15">
+                                      <ul>
+                                        <li>
+                                          <a href="#">
+                                            <i className="zmdi zmdi-shopping-cart"></i>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a
+                                            href="#"
+                                            data-tooltip="Quick View"
+                                            className="q-view"
+                                            data-bs-toggle="modal"
+                                            data-bs-target=".modal"
+                                            tabIndex="0"
+                                          >
+                                            <i className="zmdi zmdi-eye"></i>
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                          </div>
+                          ))}
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="single-ctg new-arrival-ctg">
-                    <div className="single-ctg-item">
-                      <div className="row">
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-img pos-rltv product-overlay">
-                            <a href="single-product.html">
-                              <img src="/images/product/s01.jpg" alt="" />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-content">
-                            <p>Primo Court Mid Suede</p>
-                            <p className="font-bold">$236.99</p>
-                            <div className="social-icon socile-icon-style-1 mt-15">
-                              <ul>
-                                <li>
-                                  <a href="#">
-                                    <i className="zmdi zmdi-shopping-cart"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    data-tooltip="Quick View"
-                                    className="q-view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target=".modal"
-                                    tabIndex="0"
-                                  >
-                                    <i className="zmdi zmdi-eye"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="single-ctg-item">
-                      <div className="row">
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-img pos-rltv product-overlay">
-                            <a href="single-product.html">
-                              <img src="/images/product/s02.jpg" alt="" />
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 col-md-12 col-sm-6">
-                          <div className="product-ctg-content">
-                            <p>Primo Court Mid Suede</p>
-                            <p className="font-bold">$236.99</p>
-                            <div className="social-icon socile-icon-style-1 mt-15">
-                              <ul>
-                                <li>
-                                  <a href="#">
-                                    <i className="zmdi zmdi-shopping-cart"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a
-                                    href="#"
-                                    data-tooltip="Quick View"
-                                    className="q-view"
-                                    data-bs-toggle="modal"
-                                    data-bs-target=".modal"
-                                    tabIndex="0"
-                                  >
-                                    <i className="zmdi zmdi-eye"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-md-4">
-                <div className="single-ctg on-sale-ctg">
-                  <div className="heading-title heading-style pos-rltv mb-50 text-center">
-                    <h5 className="uppercase">On Sale</h5>
-                  </div>
-                  <div className="ctg-slider-active">
-                    <div className="single-ctg new-arrival-ctg">
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s01.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s02.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="single-ctg new-arrival-ctg">
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s01.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s02.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="single-ctg top-rated-ctg">
-                  <div className="heading-title heading-style pos-rltv mb-50 text-center">
-                    <h5 className="uppercase">Top Rated</h5>
-                  </div>
-                  <div className="ctg-slider-active">
-                    <div className="single-ctg new-arrival-ctg">
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s01.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s02.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="single-ctg new-arrival-ctg">
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s01.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="single-ctg-item">
-                        <div className="row">
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-img pos-rltv product-overlay">
-                              <a href="single-product.html">
-                                <img src="/images/product/s02.jpg" alt="" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-lg-6 col-md-12 col-sm-6">
-                            <div className="product-ctg-content">
-                              <p>Primo Court Mid Suede</p>
-                              <p className="font-bold">$236.99</p>
-                              <div className="social-icon socile-icon-style-1 mt-15">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex="0"
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
         {/*new-arrival on-sale Top-ratted area end*/}
-
         {/*brand area are start*/}
-        <div className="brand-area ptb-60">
+        {/* <div className="brand-area ptb-60">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -696,229 +274,10 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/*brand area are start*/}
-
         {/*blog area are start*/}
-        <div className="blog-area pb-70">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12 text-center">
-                <div className="heading-title heading-style pos-rltv mb-50 text-center">
-                  <h5 className="uppercase">Blog</h5>
-                </div>
-                <div className="total-blog">
-                  <div className="blog-item">
-                    <div className="single-blog">
-                      <div className="blog-img pos-rltv product-overlay">
-                        <a href="#">
-                          <img src="/images/blog/01.jpg" alt="" />
-                        </a>
-                      </div>
-                      <div className="blog-content">
-                        <div className="blog-title">
-                          <h5 className="uppercase font-bold">
-                            <a href="#">New fashion collection 2022</a>
-                          </h5>
-                          <div className="like-comments-date">
-                            <ul>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-favorite-outline"></i>
-                                  13 Like
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-comment-outline"></i>
-                                  03 Comments
-                                </a>
-                              </li>
-                              <li className="blog-date">
-                                <a href="#">
-                                  <i className="zmdi zmdi-calendar-alt"></i>16
-                                  jun 2022
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="blog-text">
-                            <p>
-                              It is a long established fact that a reader will
-                              be distracted by the readable content of a page
-                              when looking at its layout. The point of using.
-                            </p>
-                          </div>
-                          <a
-                            className="read-more montserrat"
-                            href="single-blog.html"
-                          >
-                            Read More
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="blog-item">
-                    <div className="single-blog">
-                      <div className="blog-img pos-rltv product-overlay">
-                        <a href="#">
-                          <img src="/images/blog/02.jpg" alt="" />
-                        </a>
-                      </div>
-                      <div className="blog-content">
-                        <div className="blog-title">
-                          <h5 className="uppercase font-bold">
-                            <a href="#">New fashion collection 2022</a>
-                          </h5>
-                          <div className="like-comments-date">
-                            <ul>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-favorite-outline"></i>
-                                  13 Like
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-comment-outline"></i>
-                                  03 Comments
-                                </a>
-                              </li>
-                              <li className="blog-date">
-                                <a href="#">
-                                  <i className="zmdi zmdi-calendar-alt"></i>16
-                                  jun 2022
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="blog-text">
-                            <p>
-                              It is a long established fact that a reader will
-                              be distracted by the readable content of a page
-                              when looking at its layout. The point of using.
-                            </p>
-                          </div>
-                          <a
-                            className="read-more montserrat"
-                            href="single-blog.html"
-                          >
-                            Read More
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="blog-item">
-                    <div className="single-blog">
-                      <div className="blog-img pos-rltv product-overlay">
-                        <a href="#">
-                          <img src="/images/blog/03.jpg" alt="" />
-                        </a>
-                      </div>
-                      <div className="blog-content">
-                        <div className="blog-title">
-                          <h5 className="uppercase font-bold">
-                            <a href="#">New fashion collection 2022</a>
-                          </h5>
-                          <div className="like-comments-date">
-                            <ul>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-favorite-outline"></i>
-                                  13 Like
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-comment-outline"></i>
-                                  03 Comments
-                                </a>
-                              </li>
-                              <li className="blog-date">
-                                <a href="#">
-                                  <i className="zmdi zmdi-calendar-alt"></i>16
-                                  jun 2022
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="blog-text">
-                            <p>
-                              It is a long established fact that a reader will
-                              be distracted by the readable content of a page
-                              when looking at its layout. The point of using.
-                            </p>
-                          </div>
-                          <a
-                            className="read-more montserrat"
-                            href="single-blog.html"
-                          >
-                            Read More
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="blog-item">
-                    <div className="single-blog">
-                      <div className="blog-img pos-rltv product-overlay">
-                        <a href="#">
-                          <img src="/images/blog/01.jpg" alt="" />
-                        </a>
-                      </div>
-                      <div className="blog-content">
-                        <div className="blog-title">
-                          <h5 className="uppercase font-bold">
-                            <a href="#">New fashion collection 2022</a>
-                          </h5>
-                          <div className="like-comments-date">
-                            <ul>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-favorite-outline"></i>
-                                  13 Like
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-comment-outline"></i>
-                                  03 Comments
-                                </a>
-                              </li>
-                              <li className="blog-date">
-                                <a href="#">
-                                  <i className="zmdi zmdi-calendar-alt"></i>16
-                                  jun 2022
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="blog-text">
-                            <p>
-                              It is a long established fact that a reader will
-                              be distracted by the readable content of a page
-                              when looking at its layout. The point of using.
-                            </p>
-                          </div>
-                          <a
-                            className="read-more montserrat"
-                            href="single-blog.html"
-                          >
-                            Read More
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         {/*blog area are end*/}
-
         {/* footer area start*/}
         <div className="footer-area ptb-50">
           <div className="container">
@@ -1093,7 +452,6 @@ export const LandingPage = () => {
           </div>
         </div>
         {/*footer area start*/}
-
         {/*footer bottom area start*/}
         <div className="footer-bottom global-table">
           <div className="global-row">
@@ -1150,7 +508,6 @@ export const LandingPage = () => {
           </div>
         </div>
         {/*footer bottom area end*/}
-
         {/* QUICKVIEW PRODUCT */}
         <div id="quickview-wrapper">
           {/* Modal */}

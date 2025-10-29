@@ -1,48 +1,3 @@
-const Data = [];
-
-// old data
-// export const productData = [
-//   {
-//     id: 1,
-//     name: "Quisque fringilla",
-//     primaryImage: "/images/product/01.jpg",
-//     secondaryImage: "/images/product/02.jpg",
-//     price: 220,
-//     quantity: 1,
-//     isNew: true,
-//   },
-//   {
-//     id: 2,
-//     name: "Elegant Dress",
-//     primaryImage: "/images/product/03.jpg",
-//     secondaryImage: "/images/product/04.jpg",
-//     quantity: 1,
-//     price: 220,
-//   },
-//   {
-//     id: 3,
-//     name: "Summer Top",
-//     primaryImage: "/images/product/02.jpg",
-//     secondaryImage: "/images/product/03.jpg",
-//     price: 220,
-//     isSale: true,
-//     quantity: 1,
-//     rating: 4,
-//   },
-//   {
-//     id: 4,
-//     name: "Casual Shoes",
-//     primaryImage: "/images/product/05.jpg",
-//     secondaryImage: "/images/product/06.jpg",
-//     price: 220,
-//     oldPrice: 250,
-//     quantity: 1,
-//     rating: 4,
-//   },
-// ];
-
-//updated
-
 export const productData = [
   {
     id: 1,
@@ -130,6 +85,139 @@ export const productData = [
     description:
       "Durable and stylish casual shoes offering all-day comfort. Designed with premium materials and a cushioned sole for maximum support.",
     colors: ["Black", "White", "Grey", "Brown"],
+    sizes: ["6", "7", "8", "9", "10", "11"],
+  },
+  // Extracted from arrival/on-sale/top-rated section
+  {
+    id: 5,
+    name: "Primo Court Mid Suede",
+    primaryImage: "/images/product/s01.jpg",
+    secondaryImage: "/images/product/s02.jpg",
+    price: 236.99,
+    oldPrice: null,
+    quantity: 1,
+    isNew: true,
+    isSale: false,
+    rating: 5,
+    images: [
+      "images/product/s01.jpg",
+      "images/product/s02.jpg",
+      "images/product/s03.jpg",
+      "images/product/s04.jpg",
+    ],
+    description:
+      "Premium suede sneakers designed for both comfort and style. The Primo Court Mid Suede brings timeless appeal with durable materials and a cushioned sole.",
+    colors: ["Navy Blue", "Beige", "Black", "White"],
+    sizes: ["6", "7", "8", "9", "10", "11"],
+  },
+  {
+    id: 6,
+    name: "Primo Court Mid Suede",
+    primaryImage: "/images/product/s02.jpg",
+    secondaryImage: "/images/product/s01.jpg",
+    price: 236.99,
+    oldPrice: null,
+    quantity: 1,
+    isNew: true,
+    isSale: false,
+    rating: 4,
+    images: [
+      "images/product/s01.jpg",
+      "images/product/s02.jpg",
+      "images/product/s03.jpg",
+      "images/product/s04.jpg",
+    ],
+    description:
+      "Classic mid-top sneakers crafted with fine suede. Perfect for casual outings or sporty looks, offering all-day comfort and durability.",
+    colors: ["Brown", "Grey", "Olive", "White"],
+    sizes: ["6", "7", "8", "9", "10"],
+  },
+  {
+    id: 7,
+    name: "Primo Court Mid Suede",
+    primaryImage: "/images/product/s01.jpg",
+    secondaryImage: "/images/product/s02.jpg",
+    price: 236.99,
+    oldPrice: 260.0,
+    quantity: 1,
+    isNew: false,
+    isSale: true,
+    rating: 5,
+    images: [
+      "images/product/s01.jpg",
+      "images/product/s02.jpg",
+      "images/product/s03.jpg",
+      "images/product/s04.jpg",
+    ],
+    description:
+      "Limited edition suede shoes featuring elegant texture and lightweight cushioning. Designed for ultimate flexibility and breathability.",
+    colors: ["Tan", "Charcoal", "White"],
+    sizes: ["7", "8", "9", "10", "11"],
+  },
+  {
+    id: 8,
+    name: "Primo Court Mid Suede",
+    primaryImage: "/images/product/s02.jpg",
+    secondaryImage: "/images/product/s01.jpg",
+    price: 236.99,
+    oldPrice: null,
+    quantity: 1,
+    isNew: false,
+    isSale: false,
+    rating: 4,
+    images: [
+      "images/product/s01.jpg",
+      "images/product/s02.jpg",
+      "images/product/s03.jpg",
+      "images/product/s04.jpg",
+    ],
+    description:
+      "Stylish and durable suede sneakers ideal for daily wear. Combines comfort, traction, and timeless design for a versatile addition to your wardrobe.",
+    colors: ["Black", "White", "Navy", "Olive"],
+    sizes: ["6", "7", "8", "9", "10"],
+  },
+  {
+    id: 9,
+    name: "Primo Court Mid Suede",
+    primaryImage: "/images/product/s01.jpg",
+    secondaryImage: "/images/product/s02.jpg",
+    price: 236.99,
+    oldPrice: 250.0,
+    quantity: 1,
+    isNew: false,
+    isSale: true,
+    rating: 5,
+    images: [
+      "images/product/s01.jpg",
+      "images/product/s02.jpg",
+      "images/product/s03.jpg",
+      "images/product/s04.jpg",
+    ],
+    description:
+      "Top-rated premium suede footwear offering luxury comfort and urban styling. Built to last with soft insoles and fine stitching.",
+    colors: ["Brown", "Grey", "Blue", "White"],
+    sizes: ["6", "7", "8", "9", "10", "11"],
+  },
+  {
+    id: 10,
+    name: "Primo Court Mid Suede",
+    primaryImage: "/images/product/s02.jpg",
+    secondaryImage: "/images/product/s01.jpg",
+    price: 236.99,
+    oldPrice: null,
+    quantity: 1,
+    isNew: false,
+    isSale: false,
+    rating: 4,
+    images: [
+      "images/product/s01.jpg",
+      "images/product/s02.jpg",
+      "images/product/s03.jpg",
+      "images/product/s04.jpg",
+    ],
+    description:
+      "Sleek, mid-top suede sneakers designed with attention to detail. A blend of minimalism and comfort, ideal for any fashion-forward individual.",
+    colors: ["Navy", "Black", "Beige", "White"],
     sizes: ["6", "7", "8", "9", "10", "11"],
   },
 ];
