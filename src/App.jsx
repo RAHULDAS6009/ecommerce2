@@ -24,7 +24,7 @@ function App() {
           phone="919876543210"            // <-- put your number
           message="Hi! I want to order."
           position="right"                 // "left" or "right"
-          offsetX={30}
+          offsetX={5}
           offsetY={75}
           showLabel={false}               // set true to show small label
           zIndex={9999}                   // above everything
