@@ -38,11 +38,7 @@ export const ProductCard = ({ product }) => {
       {/* single product start */}
       <div className="single-product">
         <div className="product-img">
-          {(isNew || isSale) && (
-            <div className="product-label">
-              <div className={isNew ? "new" : "sale"}>{isNew ? "New" : ""}</div>
-            </div>
-          )}
+         
 
           <div
             className="single-prodcut-img product-overlay pos-rltv"

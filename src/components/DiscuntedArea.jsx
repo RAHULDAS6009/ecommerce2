@@ -94,9 +94,7 @@ const DiscuntedArea = () => {
                               {/* single product start*/}
                               <div className="single-product">
                                 <div className="product-img">
-                                  <div className="product-label">
-                                    <div className="new">New</div>
-                                  </div>
+                                  
                                   <div className="single-prodcut-img product-overlay pos-rltv">
                                     <a href="single-product.html">
                                       <img alt="" src="/images/product/01.jpg" className="primary-image" />
