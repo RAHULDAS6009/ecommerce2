@@ -7,6 +7,9 @@ import NewArrivalArea from "../components/NewArrivalArea";
 import Banner from "../components/Banner";
 import DiscuntedArea from "../components/DiscuntedArea";
 import { productData } from "../data";
+import { addToCart } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // const products = [
 //   {
@@ -28,6 +31,8 @@ const categories = [
 ];
 
 export const LandingPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div>
       <div className="wrapper home-one">
@@ -141,13 +146,18 @@ export const LandingPage = () => {
                           className={`single-ctg ${cat.className}`}
                           key={idx}
                         >
-                          {productData.slice(5).map((product, index) => (
+                          {productData.slice(5, 10).map((product, index) => (
                             <div className="single-ctg-item" key={index}>
                               <div className="row">
                                 <div className="col-lg-6 col-md-12 col-sm-6">
                                   <div className="product-ctg-img pos-rltv product-overlay">
-                                    <a href="single-product.html">
+                                    <a href="">
                                       <img
+                                        onClick={() => {
+                                          navigate(
+                                            "/productdetails/" + product.id
+                                          );
+                                        }}
                                         src={product.primaryImage}
                                         alt={product.name}
                                       />
@@ -160,7 +170,11 @@ export const LandingPage = () => {
                                     <p className="font-bold">{product.price}</p>
                                     <div className="social-icon socile-icon-style-1 mt-15">
                                       <ul>
-                                        <li>
+                                        <li
+                                          onClick={() => {
+                                            dispatch(addToCart(product));
+                                          }}
+                                        >
                                           <a href="#">
                                             <i className="zmdi zmdi-shopping-cart"></i>
                                           </a>

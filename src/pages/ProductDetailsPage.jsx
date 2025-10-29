@@ -545,8 +545,9 @@ const RelatedProducts = () => {
               <h5 className="uppercase">Related Product</h5>
             </div>
 
-            <div className="total-new-arrival new-arrival-slider-active carsoule-btn">
-              {productData.map((item) => {
+            <div className="grid-container total-new-arrival new-arrival-slider-active carsoule-btn ">
+              {/* REMOVE in production */}
+              {productData.slice(0, 4).map((item) => {
                 return <ProductCard product={item} />;
               })}
               {/* end of map */}

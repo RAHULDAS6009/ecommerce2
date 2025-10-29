@@ -7,12 +7,22 @@ import { productData } from "../data";
 
 // Custom arrow components to match your zmdi icons
 const PrevArrow = ({ onClick }) => (
-  <div className="arrow-left" onClick={onClick} role="button" aria-label="Previous">
+  <div
+    className="arrow-left"
+    onClick={onClick}
+    role="button"
+    aria-label="Previous"
+  >
     <i className="zmdi zmdi-chevron-left"></i>
   </div>
 );
 const NextArrow = ({ onClick }) => (
-  <div className="arrow-right" onClick={onClick} role="button" aria-label="Next">
+  <div
+    className="arrow-right"
+    onClick={onClick}
+    role="button"
+    aria-label="Next"
+  >
     <i className="zmdi zmdi-chevron-right"></i>
   </div>
 );
@@ -38,15 +48,17 @@ export const ProductCard = ({ product }) => {
       {/* single product start */}
       <div className="single-product">
         <div className="product-img">
-         
-
           <div
             className="single-prodcut-img product-overlay pos-rltv"
             onClick={() => navigate(`/productdetails/${id}`)}
           >
             <a href="#">
               <img alt={name} src={primaryImage} className="primary-image" />
-              <img alt={name} src={secondaryImage} className="secondary-image" />
+              <img
+                alt={name}
+                src={secondaryImage}
+                className="secondary-image"
+              />
             </a>
           </div>
 
@@ -101,7 +113,9 @@ export const ProductCard = ({ product }) => {
               <div className="prodcut-ratting">
                 {[...Array(5)].map((_, i) => (
                   <a href="#" key={i}>
-                    <i className={`fa ${i < rating ? "fa-star" : "fa-star-o"}`}></i>
+                    <i
+                      className={`fa ${i < rating ? "fa-star" : "fa-star-o"}`}
+                    ></i>
                   </a>
                 ))}
               </div>
@@ -135,9 +149,9 @@ const NewArrivalArea = () => {
     nextArrow: <NextArrow />,
     responsive: [
       { breakpoint: 1169, settings: { slidesToShow: 4 } },
-      { breakpoint: 969,  settings: { slidesToShow: 3 } },
-      { breakpoint: 767,  settings: { slidesToShow: 2 } },
-      { breakpoint: 479,  settings: { slidesToShow: 1 } },
+      { breakpoint: 969, settings: { slidesToShow: 3 } },
+      { breakpoint: 767, settings: { slidesToShow: 2 } },
+      { breakpoint: 479, settings: { slidesToShow: 1 } },
     ],
   };
 
@@ -161,7 +175,6 @@ const NewArrivalArea = () => {
                 ))}
               </Slider>
             </div>
-
           </div>
         </div>
       </div>

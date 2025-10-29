@@ -1,7 +1,11 @@
 // src/components/ShopMainArea.jsx
 import React from "react";
+import { productData } from "../data";
+import { addToCart } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ShopMainArea = () => {
+  const dispatch = useDispatch();
   return (
     <>
       {/* shop main area start */}
@@ -98,7 +102,13 @@ const ShopMainArea = () => {
                         { p1: "03", p2: "04" },
                         { p1: "04", p2: "03" },
                         { p1: "03", p2: "04" },
-                        { p1: "02", p2: "03", label: "Sale", stars: 4, extra: true },
+                        {
+                          p1: "02",
+                          p2: "03",
+                          label: "Sale",
+                          stars: 4,
+                          extra: true,
+                        },
                       ].map((card, idx) => (
                         <div
                           className={`${
@@ -175,7 +185,9 @@ const ShopMainArea = () => {
                             </div>
                             <div className="product-text">
                               <div className="prodcut-name">
-                                <a href="single-product.html">Quisque fringilla</a>
+                                <a href="single-product.html">
+                                  Quisque fringilla
+                                </a>
                               </div>
                               <div className="prodcut-ratting-price">
                                 {card.stars ? (
@@ -184,7 +196,9 @@ const ShopMainArea = () => {
                                       <a href="#" key={i}>
                                         <i
                                           className={`fa ${
-                                            i < card.stars ? "fa-star" : "fa-star-o"
+                                            i < card.stars
+                                              ? "fa-star"
+                                              : "fa-star-o"
                                           }`}
                                         ></i>
                                       </a>
@@ -210,431 +224,111 @@ const ShopMainArea = () => {
                   >
                     <div className="total-shop-product-list row">
                       {/* item 1 */}
-                      <div className="col-lg-12 item">
-                        <div className="single-product single-product-list full-widht-list">
-                          <div className="product-img">
-                            <div className="product-label red">
-                              <div className="new">Sale</div>
-                            </div>
-                            <div className="single-prodcut-img  product-overlay pos-rltv">
-                              <a href="single-product.html">
-                                <img
-                                  alt=""
-                                  src="images/product/02.jpg"
-                                  className="primary-image"
-                                />
-                                <img
-                                  alt=""
-                                  src="images/product/03.jpg"
-                                  className="secondary-image"
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-text prodcut-text-list fix">
-                            <div className="prodcut-name list-name montserrat">
-                              <a href="single-product.html">
-                                Magnetic Force Bralette
-                              </a>
-                            </div>
-                            <div className="prodcut-ratting-price">
-                              <div className="prodcut-ratting list-ratting">
-                                {[...Array(5)].map((_, i) => (
-                                  <a href="#" key={i}>
-                                    <i className="fa fa-star-o"></i>
-                                  </a>
-                                ))}
+                      {productData.slice(0, 4).map((product, index) => (
+                        <div className="col-lg-12 item" key={index}>
+                          <div className="single-product single-product-list full-widht-list">
+                            <div className="product-img">
+                              {product.label && (
+                                <div className="product-label red">
+                                  <div className="new">{product.label}</div>
+                                </div>
+                              )}
+                              <div className="single-prodcut-img product-overlay pos-rltv">
+                                <a href={"/productdetails/" + product.id}>
+                                  <img
+                                    alt={product.name}
+                                    src={product.primaryImage}
+                                    className="primary-image"
+                                  />
+                                  <img
+                                    alt={product.name}
+                                    src={product.secondaryImage}
+                                    className="secondary-image"
+                                  />
+                                </a>
                               </div>
-                              <div className="prodcut-price list-price">
-                                <div className="new-price"> $220 </div>
-                                <div className="old-price">
-                                  <del>$250</del>
+                            </div>
+
+                            <div className="product-text prodcut-text-list fix">
+                              <div className="prodcut-name list-name montserrat">
+                                <a href="single-product.html">{product.name}</a>
+                              </div>
+
+                              <div className="prodcut-ratting-price">
+                                <div className="prodcut-ratting list-ratting">
+                                  {[...Array(5)].map((_, i) => (
+                                    <a href="#" key={i}>
+                                      <i
+                                        className={
+                                          i < Math.floor(product.rating)
+                                            ? "fa fa-star" // filled star
+                                            : i < product.rating
+                                            ? "fa fa-star-half-o" // half star (for decimals)
+                                            : "fa fa-star-o" // empty star
+                                        }
+                                      ></i>
+                                    </a>
+                                  ))}
+                                </div>
+
+                                <div className="prodcut-price list-price">
+                                  <div className="new-price">
+                                    ${product.price}
+                                  </div>
+                                  {product.oldPrice && (
+                                    <div className="old-price">
+                                      <del>{product.oldPrice}</del>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+
+                              <div className="list-product-content">
+                                <p>{product.description}</p>
+                              </div>
+
+                              <div className="social-icon-wraper mt-25">
+                                <div className="social-icon socile-icon-style-1">
+                                  <ul>
+                                    <li
+                                      onClick={() => {
+                                        dispatch(addToCart(product));
+                                      }}
+                                    >
+                                      <a href="#">
+                                        <i className="zmdi zmdi-shopping-cart"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#">
+                                        <i className="zmdi zmdi-favorite-outline"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a
+                                        href="#"
+                                        data-tooltip="Quick View"
+                                        className="q-view"
+                                        data-bs-toggle="modal"
+                                        data-bs-target=".modal"
+                                        tabIndex={0}
+                                      >
+                                        <i className="zmdi zmdi-eye"></i>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#">
+                                        <i className="zmdi zmdi-repeat"></i>
+                                      </a>
+                                    </li>
+                                  </ul>
                                 </div>
                               </div>
                             </div>
-                            <div className="list-product-content">
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Fusce dolor tellus, bibendum eu lacus ids suscipit blandit
-                                tortor. Aenean eget posuere augue, vel molestie turpis. Ut
-                                tempor mauris ut justo luctus aliquam. Nullam id quam vitae
-                                odio scelerisque ultrices.
-                              </p>
-                            </div>
-                            <div className="social-icon-wraper mt-25">
-                              <div className="social-icon socile-icon-style-1">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-favorite-outline"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex={0}
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-repeat"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
                           </div>
                         </div>
-                      </div>
+                      ))}
 
-                      {/* item 2 */}
-                      <div className="col-lg-12 item">
-                        <div className="single-product single-product-list full-widht-list">
-                          <div className="product-img">
-                            <div className="single-prodcut-img  product-overlay pos-rltv">
-                              <a href="single-product.html">
-                                <img
-                                  alt=""
-                                  src="images/product/03.jpg"
-                                  className="primary-image"
-                                />
-                                <img
-                                  alt=""
-                                  src="images/product/04.jpg"
-                                  className="secondary-image"
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-text prodcut-text-list fix">
-                            <div className="prodcut-name list-name montserrat">
-                              <a href="single-product.html">
-                                Magnetic Force Bralette
-                              </a>
-                            </div>
-                            <div className="prodcut-ratting-price">
-                              <div className="prodcut-ratting list-ratting">
-                                {[...Array(5)].map((_, i) => (
-                                  <a href="#" key={i}>
-                                    <i className="fa fa-star-o"></i>
-                                  </a>
-                                ))}
-                              </div>
-                              <div className="prodcut-price list-price">
-                                <div className="new-price"> $220 </div>
-                              </div>
-                            </div>
-                            <div className="list-product-content">
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Fusce dolor tellus, bibendum eu lacus ids suscipit blandit
-                                tortor. Aenean eget posuere augue, vel molestie turpis. Ut
-                                tempor mauris ut justo luctus aliquam. Nullam id quam vitae
-                                odio scelerisque ultrices.
-                              </p>
-                            </div>
-                            <div className="social-icon-wraper mt-25">
-                              <div className="social-icon socile-icon-style-1">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-favorite-outline"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex={0}
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-repeat"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* item 3 */}
-                      <div className="col-lg-12 item">
-                        <div className="single-product single-product-list full-widht-list">
-                          <div className="product-img">
-                            <div className="single-prodcut-img  product-overlay pos-rltv">
-                              <a href="single-product.html">
-                                <img
-                                  alt=""
-                                  src="images/product/05.jpg"
-                                  className="primary-image"
-                                />
-                                <img
-                                  alt=""
-                                  src="images/product/06.jpg"
-                                  className="secondary-image"
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-text prodcut-text-list fix">
-                            <div className="prodcut-name list-name montserrat">
-                              <a href="single-product.html">
-                                Magnetic Force Bralette
-                              </a>
-                            </div>
-                            <div className="prodcut-ratting-price">
-                              <div className="prodcut-ratting list-ratting">
-                                {[...Array(5)].map((_, i) => (
-                                  <a href="#" key={i}>
-                                    <i className="fa fa-star-o"></i>
-                                  </a>
-                                ))}
-                              </div>
-                              <div className="prodcut-price list-price">
-                                <div className="new-price"> $200 </div>
-                                <div className="old-price">
-                                  <del>$300</del>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="list-product-content">
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Fusce dolor tellus, bibendum eu lacus ids suscipit blandit
-                                tortor. Aenean eget posuere augue, vel molestie turpis. Ut
-                                tempor mauris ut justo luctus aliquam. Nullam id quam vitae
-                                odio scelerisque ultrices.
-                              </p>
-                            </div>
-                            <div className="social-icon-wraper mt-25">
-                              <div className="social-icon socile-icon-style-1">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-favorite-outline"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex={0}
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-repeat"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* item 4 */}
-                      <div className="col-lg-12 item">
-                        <div className="single-product single-product-list full-widht-list">
-                          <div className="product-img">
-                            <div className="single-prodcut-img  product-overlay pos-rltv">
-                              <a href="single-product.html">
-                                <img
-                                  alt=""
-                                  src="images/product/04.jpg"
-                                  className="primary-image"
-                                />
-                                <img
-                                  alt=""
-                                  src="images/product/05.jpg"
-                                  className="secondary-image"
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-text prodcut-text-list fix">
-                            <div className="prodcut-name list-name montserrat">
-                              <a href="single-product.html">
-                                Magnetic Force Bralette
-                              </a>
-                            </div>
-                            <div className="prodcut-ratting-price">
-                              <div className="prodcut-ratting list-ratting">
-                                {[...Array(5)].map((_, i) => (
-                                  <a href="#" key={i}>
-                                    <i className="fa fa-star-o"></i>
-                                  </a>
-                                ))}
-                              </div>
-                              <div className="prodcut-price list-price">
-                                <div className="new-price"> $220 </div>
-                              </div>
-                            </div>
-                            <div className="list-product-content">
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Fusce dolor tellus, bibendum eu lacus ids suscipit blandit
-                                tortor. Aenean eget posuere augue, vel molestie turpis. Ut
-                                tempor mauris ut justo luctus aliquam. Nullam id quam vitae
-                                odio scelerisque ultrices.
-                              </p>
-                            </div>
-                            <div className="social-icon-wraper mt-25">
-                              <div className="social-icon socile-icon-style-1">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-favorite-outline"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex={0}
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-repeat"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* item 5 */}
-                      <div className="col-lg-12 item">
-                        <div className="single-product single-product-list full-widht-list">
-                          <div className="product-img">
-                            <div className="single-prodcut-img  product-overlay pos-rltv">
-                              <a href="single-product.html">
-                                <img
-                                  alt=""
-                                  src="images/product/06.jpg"
-                                  className="primary-image"
-                                />
-                                <img
-                                  alt=""
-                                  src="images/product/07.jpg"
-                                  className="secondary-image"
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-text prodcut-text-list fix">
-                            <div className="prodcut-name list-name montserrat">
-                              <a href="single-product.html">
-                                Magnetic Force Bralette
-                              </a>
-                            </div>
-                            <div className="prodcut-ratting-price">
-                              <div className="prodcut-ratting list-ratting">
-                                {[...Array(5)].map((_, i) => (
-                                  <a href="#" key={i}>
-                                    <i className="fa fa-star-o"></i>
-                                  </a>
-                                ))}
-                              </div>
-                              <div className="prodcut-price list-price">
-                                <div className="new-price"> $200 </div>
-                                <div className="old-price">
-                                  <del>$300</del>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="list-product-content">
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Fusce dolor tellus, bibendum eu lacus ids suscipit blandit
-                                tortor. Aenean eget posuere augue, vel molestie turpis. Ut
-                                tempor mauris ut justo luctus aliquam. Nullam id quam vitae
-                                odio scelerisque ultrices.
-                              </p>
-                            </div>
-                            <div className="social-icon-wraper mt-25">
-                              <div className="social-icon socile-icon-style-1">
-                                <ul>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-shopping-cart"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-favorite-outline"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a
-                                      href="#"
-                                      data-tooltip="Quick View"
-                                      className="q-view"
-                                      data-bs-toggle="modal"
-                                      data-bs-target=".modal"
-                                      tabIndex={0}
-                                    >
-                                      <i className="zmdi zmdi-eye"></i>
-                                    </a>
-                                  </li>
-                                  <li>
-                                    <a href="#">
-                                      <i className="zmdi zmdi-repeat"></i>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                       {/* /items */}
                     </div>
                   </div>
@@ -652,10 +346,14 @@ const ShopMainArea = () => {
                           <span className="page-numbers current">1</span>
                         </li>
                         <li>
-                          <a href="#" className="page-numbers">2</a>
+                          <a href="#" className="page-numbers">
+                            2
+                          </a>
                         </li>
                         <li>
-                          <a href="#" className="page-numbers">3</a>
+                          <a href="#" className="page-numbers">
+                            3
+                          </a>
                         </li>
                         <li>
                           <a href="#" className="next page-numbers">
