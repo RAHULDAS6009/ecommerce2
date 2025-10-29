@@ -172,7 +172,7 @@ const Header = () => {
                 <a href="/fullgrid">Women</a>
               </li>
               <li>
-                <a href="blog.html">About</a>
+                <a href="/about">About</a>
               </li>
             </ul>
           </div>
@@ -360,7 +360,7 @@ const Header = () => {
                         <a href="/">BLOG</a>
                       </li>
                       <li>
-                        <a href="/">ABOUT</a>
+                        <a href="/about">ABOUT</a>
                       </li>
                     </ul>
                   </nav>

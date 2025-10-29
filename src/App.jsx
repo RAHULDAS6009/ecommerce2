@@ -7,6 +7,7 @@ import Cart from "./pages/Cart";
 
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import StickyOrderBar from "./components/StickyOrderBar";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/fullgrid" element={<ShopFullGridPage />} />
           <Route path="/productdetails/:id" element={<ProductDetailsPage />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
 
         {/* WhatsApp bubble (always on top of pages) */}
