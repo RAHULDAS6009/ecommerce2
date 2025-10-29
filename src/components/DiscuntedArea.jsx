@@ -15,7 +15,7 @@ const NextArrow = ({ onClick }) => (
 
 /* slick settings same as your snippet */
 const sliderSettings = {
-  slidesToShow: 1,
+  slidesToShow: 2,
   slidesToScroll: 1,
   autoplay: false,
   autoplaySpeed: 5000,

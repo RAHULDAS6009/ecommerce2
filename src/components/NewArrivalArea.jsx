@@ -40,7 +40,7 @@ export const ProductCard = ({ product }) => {
         <div className="product-img">
           {(isNew || isSale) && (
             <div className="product-label">
-              <div className={isNew ? "new" : "sale"}>{isNew ? "New" : "Sale"}</div>
+              <div className={isNew ? "new" : "sale"}>{isNew ? "New" : ""}</div>
             </div>
           )}
 
@@ -129,7 +129,7 @@ export const ProductCard = ({ product }) => {
 const NewArrivalArea = () => {
   // replicate your jQuery config
   const settings = {
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 5000,
