@@ -38,71 +38,11 @@ const Banner = () => {
                             <li>Best quality</li>
                           </ul>
                         </div>
-                        <div className="social-icon-wraper mt-25">
-                          <div className="social-icon socile-icon-style-1">
-                            <ul>
-                              <li
-                                onClick={() => {
-                                  dispatch(
-                                    addToCart({
-                                      id: 11,
-                                      name: "Grag T- Shirt",
-                                      primaryImage: "/images/banner/02.png",
-                                      secondaryImage: "/images/product/s01.jpg",
-                                      price: 99.99,
-                                      oldPrice: null,
-                                      quantity: 1,
-                                      isNew: false,
-                                      isSale: false,
-                                      rating: 4,
-                                      images: [
-                                        "images/product/s01.jpg",
-                                        "images/product/s02.jpg",
-                                        "images/product/s03.jpg",
-                                        "images/product/s04.jpg",
-                                      ],
-                                      description:
-                                        "Sleek, mid-top suede sneakers designed with attention to detail. A blend of minimalism and comfort, ideal for any fashion-forward individual.",
-                                      colors: [
-                                        "Navy",
-                                        "Black",
-                                        "Beige",
-                                        "White",
-                                      ],
-                                      sizes: ["6", "7", "8", "9", "10", "11"],
-                                    })
-                                  );
-                                }}
-                              >
-                                <a href="#">
-                                  <i className="zmdi zmdi-shopping-cart"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-favorite-outline"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  href="#"
-                                  data-tooltip="Quick View"
-                                  className="q-view"
-                                  data-bs-toggle="modal"
-                                  data-bs-target=".modal"
-                                  tabIndex="0"
-                                >
-                                  <i className="zmdi zmdi-eye"></i>
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="zmdi zmdi-repeat"></i>
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
+
+                        <a className="btn-def btn2" href="/fullgrid">
+                          Shop Now
+                        </a>
+                        
                       </div>
                     </div>
                   </div>
