@@ -24,9 +24,9 @@ const Header = () => {
                     <li>
                       <a href="#">Login</a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="#">Register</a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
@@ -197,9 +197,9 @@ const Header = () => {
                     <ul className="main-menu">
                       <li className="current">
                         <a className="active" href="/">
-                          Home
+                         Home
                         </a>
-                        <ul className="dropdown">
+                        {/* <ul className="dropdown">
                           <li>
                             <a className="active" href="/">
                               Home One
@@ -214,14 +214,14 @@ const Header = () => {
                           <li>
                             <a href="index-boxed-02.html">Home Four (Boxed)</a>
                           </li>
-                        </ul>
+                        </ul> */}
                       </li>
 
                       <li className="mega-parent pos-rltv">
                         <a href="/fullgrid">Man</a>
-                        <div className="mega-menu-area mma-800">
-                          <ul className="single-mega-item">
-                            <li className="menu-title uppercase">Shirts</li>
+                        {/* <div className="mega-menu-area mma-800"> */}
+                          {/* <ul className="single-mega-item"> */}
+                            {/* <li className="menu-title uppercase">Shirts</li>
                             <li>
                               <a href="/fullgrid">Shirt 01</a>
                             </li>
@@ -272,13 +272,13 @@ const Header = () => {
                                 alt="banner"
                               />
                             </a>
-                          </div>
-                        </div>
+                          </div> */}
+                        {/* </div> */}
                       </li>
 
                       <li className="mega-parent pos-rltv">
                         <a href="/fullgrid">Women</a>
-                        <div className="mega-menu-area mma-700">
+                        {/* <div className="mega-menu-area mma-700">
                           <ul className="single-mega-item">
                             <li className="menu-title uppercase">Sharees</li>
                             <li>
@@ -341,24 +341,10 @@ const Header = () => {
                               />
                             </a>
                           </div>
-                        </div>
+                        </div> */}
                       </li>
 
-                      <li className="mega-parent">
-                        <a href="/fullgrid">Shortcut</a>
-                        <div className="mega-menu-area mma-970">
-                          {/* … keep existing */}
-                        </div>
-                      </li>
-
-                      <li className="mega-parent">
-                        <a href="/">Pages</a>
-                        <div className="mega-menu-area mma-970">{/* … */}</div>
-                      </li>
-
-                      <li>
-                        <a href="/">BLOG</a>
-                      </li>
+                     
                       <li>
                         <a href="/about">ABOUT</a>
                       </li>

@@ -88,7 +88,11 @@ export const productData = [
     sizes: ["6", "7", "8", "9", "10", "11"],
   },
   // Extracted from arrival/on-sale/top-rated section
-  {
+  
+];
+
+
+export const bestSellers = [{
     id: 5,
     name: "Primo Court Mid Suede",
     primaryImage: "/images/product/s01.jpg",
@@ -241,5 +245,5 @@ export const productData = [
       "Sleek, mid-top suede sneakers designed with attention to detail. A blend of minimalism and comfort, ideal for any fashion-forward individual.",
     colors: ["Navy", "Black", "Beige", "White"],
     sizes: ["6", "7", "8", "9", "10", "11"],
-  },
-];
+  },];
+  

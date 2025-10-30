@@ -3,6 +3,7 @@ import React from "react";
 import { productData } from "../data";
 import { addToCart } from "../redux/cartSlice";
 import { useDispatch } from "react-redux";
+import Footer from "../pages/footer";
 
 const ShopMainArea = () => {
   const dispatch = useDispatch();
@@ -45,27 +46,8 @@ const ShopMainArea = () => {
                   <div className="col-xl-4 col-lg-3 col-md-2">
                     <div className="list-grid-view text-center">
                       <ul className="nav" role="tablist">
-                        <li role="presentation">
-                          <a
-                            href="#grid"
-                            aria-controls="grid"
-                            role="tab"
-                            data-bs-toggle="tab"
-                          >
-                            <i className="zmdi zmdi-widgets"></i>
-                          </a>
-                        </li>
-                        <li role="presentation">
-                          <a
-                            className="active"
-                            href="#list"
-                            aria-controls="list"
-                            role="tab"
-                            data-bs-toggle="tab"
-                          >
-                            <i className="zmdi zmdi-view-list-alt"></i>
-                          </a>
-                        </li>
+                       
+                        
                       </ul>
                     </div>
                   </div>
@@ -299,7 +281,7 @@ const ShopMainArea = () => {
                                         <i className="zmdi zmdi-shopping-cart"></i>
                                       </a>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                       <a href="#">
                                         <i className="zmdi zmdi-favorite-outline"></i>
                                       </a>
@@ -320,7 +302,7 @@ const ShopMainArea = () => {
                                       <a href="#">
                                         <i className="zmdi zmdi-repeat"></i>
                                       </a>
-                                    </li>
+                                    </li> */}
                                   </ul>
                                 </div>
                               </div>
@@ -372,6 +354,7 @@ const ShopMainArea = () => {
         </div>
       </div>
       {/* shop main area end */}
+        <Footer />
     </>
   );
 };

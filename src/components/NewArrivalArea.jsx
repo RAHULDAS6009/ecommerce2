@@ -1,31 +1,8 @@
 import React from "react";
-import Slider from "react-slick";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { productData } from "../data";
-
-// Custom arrow components to match your zmdi icons
-const PrevArrow = ({ onClick }) => (
-  <div
-    className="arrow-left"
-    onClick={onClick}
-    role="button"
-    aria-label="Previous"
-  >
-    <i className="zmdi zmdi-chevron-left"></i>
-  </div>
-);
-const NextArrow = ({ onClick }) => (
-  <div
-    className="arrow-right"
-    onClick={onClick}
-    role="button"
-    aria-label="Next"
-  >
-    <i className="zmdi zmdi-chevron-right"></i>
-  </div>
-);
 
 export const ProductCard = ({ product }) => {
   const {
@@ -35,8 +12,6 @@ export const ProductCard = ({ product }) => {
     secondaryImage,
     price,
     oldPrice,
-    isNew,
-    isSale,
     rating,
   } = product;
 
@@ -45,20 +20,16 @@ export const ProductCard = ({ product }) => {
 
   return (
     <div className="product-item">
-      {/* single product start */}
       <div className="single-product">
         <div className="product-img">
           <div
             className="single-prodcut-img product-overlay pos-rltv"
             onClick={() => navigate(`/productdetails/${id}`)}
+            style={{ cursor: "pointer" }}
           >
             <a href="#">
               <img alt={name} src={primaryImage} className="primary-image" />
-              <img
-                alt={name}
-                src={secondaryImage}
-                className="secondary-image"
-              />
+              <img alt={name} src={secondaryImage} className="secondary-image" />
             </a>
           </div>
 
@@ -78,7 +49,7 @@ export const ProductCard = ({ product }) => {
                   <i className="fa fa-cart-plus"></i>
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#" data-tooltip="Wishlist" className="w-list">
                   <i className="fa fa-heart-o"></i>
                 </a>
@@ -98,7 +69,7 @@ export const ProductCard = ({ product }) => {
                 >
                   <i className="fa fa-eye"></i>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -121,7 +92,7 @@ export const ProductCard = ({ product }) => {
               </div>
             )}
             <div className="prodcut-price">
-              <div className="new-price"> ${price} </div>
+              <div className="new-price">${price}</div>
               {oldPrice && (
                 <div className="old-price">
                   <del>${oldPrice}</del>
@@ -131,52 +102,31 @@ export const ProductCard = ({ product }) => {
           </div>
         </div>
       </div>
-      {/* single product end */}
     </div>
   );
 };
 
 const NewArrivalArea = () => {
-  // replicate your jQuery config
-  const settings = {
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 5000,
-    dots: false,
-    arrows: true,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    responsive: [
-      { breakpoint: 1169, settings: { slidesToShow: 4 } },
-      { breakpoint: 969, settings: { slidesToShow: 3 } },
-      { breakpoint: 767, settings: { slidesToShow: 2 } },
-      { breakpoint: 479, settings: { slidesToShow: 1 } },
-    ],
-  };
-
   return (
     <div className="new-arrival-area pt-70">
       <div className="container">
-        <div className="row">
-          <div className="col-lg-12 text-center">
-            <div className="heading-title heading-style pos-rltv mb-50 text-center">
-              <h5 className="uppercase">New Arrival</h5>
-            </div>
-
-            {/* keep your original classes so existing CSS still applies */}
-            <div className="total-new-arrival new-arrival-slider-active carsoule-btn row">
-              <Slider {...settings}>
-                {productData.map((product, index) => (
-                  // wrap each slide in a div; react-slick handles width
-                  <div key={index}>
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </Slider>
-            </div>
+        <div className="heading-title heading-style pos-rltv mb-50 text-center">
+          <h5 className="uppercase">NEW ARRIVAL</h5>
+          <div className="section-bar">
+            <span className="bar-active"></span>
+            <span className="bar-inactive"></span>
           </div>
         </div>
+
+        {/* ⬇⬇ THIS is the important part */}
+        <div className="new-arrival-grid">
+          {productData.map((product, index) => (
+            <div className="new-arrival-col" key={index}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+        {/* ⬆⬆ THIS must exist, not just a single <ProductCard /> */}
       </div>
     </div>
   );

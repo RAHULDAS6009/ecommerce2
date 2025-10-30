@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "./footer";
 
 /**
  * AboutUs – Clothing brand version
@@ -244,7 +245,7 @@ const AboutUs = () => {
       </div>
       {/* better/skills area end */}
 
-     
+       <Footer />
     </>
   );
 };
